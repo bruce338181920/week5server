@@ -31,11 +31,11 @@ app.post('/uploadData',function(req,res){
 // pull the geometry component together
 // note that well known text requires the points as longitude/latitude !
 // well known text should look like: 'POINT(-71.064544 42.28787)'
-var geometrystring = "st_geomfromtext('POINT(" + req.body.longitude + " " + req.body.latitude + ")'";
+//var geometrystring = "st_geomfromtext('POINT(" + req.body.longitude + " " + req.body.latitude + ")'";
 
-var querystring = "INSERT into formdata (name,surname,module,language, modulelist, lecturetime, geom) values ('";
+var querystring = "INSERT into nform (name,surname,module,language, modulelist, lecturetime, latitude, longitude) values ('";
 querystring = querystring + req.body.Change + "','" + req.body.surname + "','" + req.body.module + "','";
-querystring = querystring + req.body.language + "','" + req.body.modulelist + "','" + req.body.lecturetime+"',"+geometrystring + "))";
+querystring = querystring + req.body.language + "','" + req.body.modulelist + "','" + req.body.lecturetime+"','"+req.body.latitude + "','"+ req.body.longitude + "')";
        	console.log(querystring);
        	client.query( querystring,function(err,result) {
           done(); 
