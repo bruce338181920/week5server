@@ -34,7 +34,7 @@ app.post('/uploadData',function(req,res){
 var geometrystring = "st_geomfromtext('POINT(" + req.body.longitude + " " + req.body.latitude + ")'";
 
 var querystring = "INSERT into formdata (name,surname,module,language, modulelist, lecturetime, geom) values ('";
-querystring = querystring + req.body.name + "','" + req.body.surname + "','" + req.body.module + "','";
+querystring = querystring + req.body.Change + "','" + req.body.surname + "','" + req.body.module + "','";
 querystring = querystring + req.body.language + "','" + req.body.modulelist + "','" + req.body.lecturetime+"',"+geometrystring + "))";
        	console.log(querystring);
        	client.query( querystring,function(err,result) {
